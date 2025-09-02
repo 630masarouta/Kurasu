@@ -11,6 +11,16 @@
   </head>
 
   <body>
+    <header>
+      <% if logged_in? %>
+        <span>こんにちは、<%= current_user.name %>さん</span>
+        <%= button_to "ログアウト", logout_path, method: :delete %>
+      <% else %>
+        <%= link_to "新規登録", new_user_path %>
+        <%= link_to "ログイン", login_path %>
+      <% end %>
+    </header>
+
     <% if flash[:notice] %>
       <p class="notice"><%= notice %></p>
     <% end %>
